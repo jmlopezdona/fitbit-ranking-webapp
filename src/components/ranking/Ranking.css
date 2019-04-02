@@ -1,0 +1,158 @@
+html {
+    position: relative;
+    height: 100%;
+    background: url(../../assets/images/bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+       -moz-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover;
+}
+
+html::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.ranking-list {
+    width: 100%;
+    height: 100%;
+}
+
+.ranking-list-wrapper {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 100%;
+    margin: 0 auto;
+    color: white;
+    background-color: rgba(0, 0, 0, .6);
+    align-items: center;
+}
+
+.logo-icon-container {
+    z-index: 1;
+    width: 100px;
+    height: 50px;
+    margin: 32px 0 0 25px;
+    align-self: flex-start;
+}
+
+.logo-client-icon {
+    display: block;
+    height: 100%;
+    background: url('../../assets/images/soleraLogo.png') center center no-repeat;
+    background-size: contain;
+}
+
+.ranking-list-title {
+    z-index: 1;
+}
+
+.ranking-list-title h1 {
+    font-family: GraphikRegular;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight:normal;
+}
+
+.ranking-list-title h2 {
+    font-family: GraphikRegular;
+    font-size: 32px;
+    font-weight:normal;
+}
+
+.ranking-list-container {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mdc-list-item {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: flex-start;
+    height: 48px;
+    padding: 0 16px 0 0;
+    overflow: hidden;
+}
+
+.ranking-list-container h3 {
+    font-family: GraphikLight;
+    font-size: 16px;
+    letter-spacing: 2.6px;
+}
+
+.ranking-list-container h3 span {
+    color: #ff7f06;
+}
+
+.mdc-list {
+    font-family: GraphikRegular;
+    z-index: 1;
+    width: 400px;
+    margin: 12px 0;
+    overflow-y: scroll;
+    height: 50vh;
+}
+
+.mdc-list-item__graphic {
+    color: white;
+}
+
+.mdc-list-item__text {
+    color: white;
+}
+
+.mdc-list-divider {
+    height: 0;
+    margin: 0;
+    border: none;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: white;
+    font-weight: 400;
+}
+
+.trending_up {
+    color: green;
+}
+.trending_down {
+    color: red;
+}
+.trending_flat {
+    color: white;
+}
+.selected-ranking {
+    color: orange;
+}
+
+button {
+    font-family: GraphikRegular;
+    font-size: 16px;
+    width: 130px;
+    margin-top: 24px;
+}
+
+button {
+    font-family: GraphikRegular;
+    font-size: 16px;
+    width: 130px;
+    margin-top: 24px;
+}
+
+.mdc-dialog__title {
+    font-family: GraphikRegular;
+}
+
+.mdc-list {
+    font-family: GraphikRegular;
+}

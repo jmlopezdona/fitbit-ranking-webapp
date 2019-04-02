@@ -1,0 +1,70 @@
+/*APPLICATION FONTS*/
+@font-face {
+  font-family: GraphikRegular;
+  font-weight: normal;
+  font-style: normal;
+
+  src: url('./assets/fonts/Graphik/Graphik-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: GraphikLight;
+  font-weight: normal;
+  font-style: normal;
+
+  src: url('./assets/fonts/Graphik/Graphik-Light.otf') format('opentype');
+}
+
+@font-face {
+  font-family: GraphikMedium;
+  font-weight: normal;
+  font-style: normal;
+
+  src: url('./assets/fonts/Graphik/Graphik-Medium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: GraphikBold;
+  font-weight: normal;
+  font-style: normal;
+
+  src: url('./assets/fonts/Graphik/Graphik-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: GraphikBlack;
+  font-weight: normal;
+  font-style: normal;
+
+  src: url('./assets/fonts/Graphik/Graphik-Black.otf') format('opentype');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: GraphikRegular;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100ww;
+  height: 100%;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+@media all and (min-width: 400px) {
+  .wrapper {
+    max-width: 400px;
+  }
+}
