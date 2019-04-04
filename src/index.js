@@ -16,7 +16,6 @@ ReactDOM.render(
                 <Route exact path="/" component={DepartamentRanking} />
                 <Route path="/users" component={UserRanking} />
                 <Route path="/departaments" component={DepartamentRanking} />
-                <Route path="/_=_" component={DepartamentRanking}/>
             </div>
         </Router>
     </Provider>,
