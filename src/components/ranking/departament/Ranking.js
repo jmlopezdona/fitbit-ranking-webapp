@@ -4,6 +4,14 @@ import './Ranking.css';
 import RankingList from './RankingList';
 import { getUser } from '../../../actions/index';
 
+function Greeting(props) {
+    if (props.position == 1) {
+        return <h2 className="mdc-typography--headline4">¡Enhorabuena {props.name}!</h2>
+    } else {
+        return <h2 className="mdc-typography--headline4">¡Hola {props.name}!</h2>
+    }
+}
+
 function Welcome(props) {
     if (props.authenticated) {
         return (
@@ -14,7 +22,7 @@ function Welcome(props) {
                     </div>
                     <div className="ranking-list-title">
                         <h1 className="mdc-typography--headline3">Ranking</h1>
-                        <h2 className="mdc-typography--headline4">¡Enhorabuena {props.user.displayName}!</h2>
+                        <Greeting position={props.position} name={props.user.displayName}/>
                     </div>
                     <div className="ranking-list-container"> 
                         <h3>Tu departamento va el <span>{props.position}</span> esta semana</h3>
