@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
-import { Route, BrowserRouter as Router } from 'react-router-dom'
+import { Route, HashRouter as Router } from 'react-router-dom'
 import { PersistGate } from 'redux-persist/integration/react'
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { store, persistor } from "./store";
-import Login from './components/login/Login';
-import Ranking from './components/ranking/Ranking';
+import UserRanking from './components/ranking/user/Ranking';
+import DepartamentRanking from './components/ranking/departament/Ranking';
 import numeral from 'numeral';
 
 ReactDOM.render(
@@ -15,7 +15,10 @@ ReactDOM.render(
         <PersistGate loading={null} persistor={persistor}>
             <Router>
                 <div>
-                    <Route exact path="/" component={Ranking} />
+                    <Route exact path="/" component={DepartamentRanking} />
+                    <Route path="/users" component={UserRanking} />
+                    <Route path="/departaments" component={DepartamentRanking} />
+                    <Route path="/_=_" component={DepartamentRanking}/>
                 </div>
             </Router>
         </PersistGate>

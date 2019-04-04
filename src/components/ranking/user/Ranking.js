@@ -2,10 +2,10 @@ import React, {Component} from "react";
 import { connect } from "react-redux";
 import './Ranking.css';
 import RankingList from './RankingList';
-import { getUser } from '../../actions/index';
+import { getUser } from '../../../actions/index';
 
 function Welcome(props) {
-    if (props.login.authenticated) {
+    if (props.authenticated) {
         return (
             <div className="ranking-list">
                 <div className="ranking-list-wrapper">
@@ -14,7 +14,7 @@ function Welcome(props) {
                     </div>
                     <div className="ranking-list-title">
                         <h1 className="mdc-typography--headline3">Ranking</h1>
-                        <h2 className="mdc-typography--headline4">¡Enhorabuena {props.login.user.displayName}!</h2>
+                        <h2 className="mdc-typography--headline4">¡Enhorabuena {props.user.displayName}!</h2>
                     </div>
                     <div className="ranking-list-container"> 
                         <h3>Tienes el puesto <span>{props.position}</span> esta semana</h3>
@@ -49,22 +49,23 @@ export class Ranking extends Component {
     }
   
     componentDidMount() {
-        if (!this.props.login.user.authenticated) {
+        if (!this.props.authenticated) {
             this.props.getUser();
         }
     }
 
     render() {
         return (
-            <Welcome position={this.props.position} login={this.props.login} />
+            <Welcome authenticated={this.props.authenticated} position={this.props.position} user={this.props.user} />
         );
     }
 }
 
 function mapStateToProps(state) {
     return { 
-        position: state.position,
-        login: state.login 
+        position: state.positionUserRanking,
+        authenticated: state.authenticated,
+        user: state.user 
     };
 };
   

@@ -1,7 +1,7 @@
 html {
     position: relative;
     height: 100%;
-    background: url(../../assets/images/bg.jpg) no-repeat center center fixed;
+    background: url(../../../assets/images/bg.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
        -moz-background-size: cover;
          -o-background-size: cover;
@@ -47,7 +47,7 @@ html::before {
 .logo-client-icon {
     display: block;
     height: 100%;
-    background: url('../../assets/images/soleraLogo.png') center center no-repeat;
+    background: url('../../../assets/images/soleraLogo.png') center center no-repeat;
     background-size: contain;
 }
 
@@ -81,8 +81,9 @@ html::before {
     align-items: center;
     justify-content: flex-start;
     height: 48px;
-    padding: 0 16px 0 0;
+    padding: 0 30px 0 16px;
     overflow: hidden;
+    font-size: 14px;
 }
 
 .ranking-list-container h3 {

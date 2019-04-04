@@ -27,7 +27,7 @@ export class Login extends Component {
 }
 
 function mapStateToProps(state) {
-  return { login: state.login };
+  return { user: state.user };
 };
   
 export default  connect(mapStateToProps)(Login);

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getRanking } from "../../actions/index";
+import { getDepartamentRanking as getRanking} from "../../../actions/index";
 import numeral from "numeral";
 
 function Trend(props) {
@@ -57,7 +57,7 @@ export class List extends Component {
 }
 
 function mapStateToProps(state) {
-    return { ranking: state.ranking };
+    return { ranking: state.departamentRanking };
 };
 
 export default connect(mapStateToProps, { getRanking })(List);
