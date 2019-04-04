@@ -30,4 +30,4 @@ function mapStateToProps(state) {
   return { user: state.user };
 };
   
-export default  connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Login);

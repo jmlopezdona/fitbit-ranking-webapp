@@ -8,8 +8,7 @@
     "react-dom": "^16.8.6",
     "react-rounded-image": "^2.0.2",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8",
-    "redux-persist": "^5.10.0"
+    "react-scripts": "2.1.8"
   },
   "scripts": {
     "start": "react-scripts start",

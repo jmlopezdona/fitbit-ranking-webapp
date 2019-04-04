@@ -1,27 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
-import { Route, HashRouter as Router } from 'react-router-dom'
-import { PersistGate } from 'redux-persist/integration/react'
+import { Route, HashRouter as Router } from 'react-router-dom';
+import configureStore from './store';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import { store, persistor } from "./store";
 import UserRanking from './components/ranking/user/Ranking';
 import DepartamentRanking from './components/ranking/departament/Ranking';
 import numeral from 'numeral';
 
 ReactDOM.render(
-    <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-            <Router>
-                <div>
-                    <Route exact path="/" component={DepartamentRanking} />
-                    <Route path="/users" component={UserRanking} />
-                    <Route path="/departaments" component={DepartamentRanking} />
-                    <Route path="/_=_" component={DepartamentRanking}/>
-                </div>
-            </Router>
-        </PersistGate>
+    <Provider store={configureStore()}>
+        <Router>
+            <div>
+                <Route exact path="/" component={DepartamentRanking} />
+                <Route path="/users" component={UserRanking} />
+                <Route path="/departaments" component={DepartamentRanking} />
+                <Route path="/_=_" component={DepartamentRanking}/>
+            </div>
+        </Router>
     </Provider>,
     document.getElementById('root')
 );
