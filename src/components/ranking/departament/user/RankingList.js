@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {withRouter} from "react-router-dom";
-import { getDepartamentRanking as getRanking} from "../../../actions/index";
+import { getUserRanking as getRanking} from "../../../../actions/index";
 import numeral from "numeral";
 
 function Trend(props) {
@@ -38,7 +37,7 @@ export class List extends Component {
         return (
             <ul className="mdc-list mdc-list--avatar-list">
             {this.props.ranking.map(el => (
-                <div key={el.position} onClick={() => {this.props.history.push('/users/departament/' + el.name);}}>
+                <div key={el.position}>
                     <li className="mdc-list-item mdc-ripple-upgraded">
                         <Number position={this.props.position} listPosition={el.position}/>
                         <span className="mdc-list-item__text">
@@ -57,8 +56,31 @@ export class List extends Component {
     };
 }
 
-function mapStateToProps(state) {
-    return { ranking: state.departamentRanking };
+function calculateTrends(currentRanking, previousRanking) {
+    console.log(currentRanking);
+    console.log(previousRanking);
+    for (var i = 0, len = currentRanking.length; i < len; i++) {
+        currentRanking[i].position = i + 1;
+        for (var j = 0, len = previousRanking.length; j < len; j++) {
+            if (currentRanking[i].name === previousRanking[j].name) {
+                if (i<j) {
+                    currentRanking[i].trend = ">";
+                } else if (i>j) {
+                    currentRanking[i].trend = "<";
+                } else {
+                    currentRanking[i].trend = "=";
+                }
+            }
+        }
+    }
+    console.log(currentRanking);
+    return currentRanking;
+}
+
+function mapStateToProps(state, ownProps) {
+    var currentRanking = state.userRanking.filter((item) => item.departament === ownProps.name);
+    var previousRanking = currentRanking.slice().sort((a, b) => (a.previusSteps < b.previusSteps) ? 1 : -1);
+    return { ranking: calculateTrends(currentRanking, previousRanking) };
 };
 
-export default withRouter(connect(mapStateToProps, { getRanking })(List));
+export default connect(mapStateToProps, { getRanking })(List);
