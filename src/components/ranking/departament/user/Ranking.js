@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import { connect } from "react-redux";
 import './Ranking.css';
 import RankingList from './RankingList';
+import { Link } from 'react-router-dom';
 import { getUser } from '../../../../actions/index';
 
 export class Ranking extends Component {
@@ -20,7 +21,7 @@ export class Ranking extends Component {
                         <h1 className="mdc-typography--headline3">Ranking</h1>
                     </div>
                     <div className="ranking-list-container"> 
-                        <h3><a href="/" style={{color: "#ff7f06"}}>Volver</a></h3>
+                        <h3><Link to="/" style={{color: "#ff7f06"}}>Volver</Link></h3>
                         <RankingList position={this.props.position} name={this.props.match.params.name}/>
                     </div>
                 </div>
