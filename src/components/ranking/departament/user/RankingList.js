@@ -56,31 +56,8 @@ export class List extends Component {
     };
 }
 
-function calculateTrends(currentRanking, previousRanking) {
-    console.log(currentRanking);
-    console.log(previousRanking);
-    for (var i = 0, len = currentRanking.length; i < len; i++) {
-        currentRanking[i].position = i + 1;
-        for (var j = 0, len = previousRanking.length; j < len; j++) {
-            if (currentRanking[i].name === previousRanking[j].name) {
-                if (i<j) {
-                    currentRanking[i].trend = ">";
-                } else if (i>j) {
-                    currentRanking[i].trend = "<";
-                } else {
-                    currentRanking[i].trend = "=";
-                }
-            }
-        }
-    }
-    console.log(currentRanking);
-    return currentRanking;
-}
-
-function mapStateToProps(state, ownProps) {
-    var currentRanking = state.userRanking.filter((item) => item.departament === ownProps.name);
-    var previousRanking = currentRanking.slice().sort((a, b) => (a.previusSteps < b.previusSteps) ? 1 : -1);
-    return { ranking: calculateTrends(currentRanking, previousRanking) };
+function mapStateToProps(state) {
+    return { ranking: state.userRanking };
 };
 
 export default connect(mapStateToProps, { getRanking })(List);

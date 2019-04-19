@@ -5,7 +5,6 @@ import { Route, HashRouter as Router } from 'react-router-dom';
 import configureStore from './store';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import UserRanking from './components/ranking/user/Ranking';
 import DepartamentRanking from './components/ranking/departament/Ranking';
 import DepartamentUserRanking from './components/ranking/departament/user/Ranking';
 import numeral from 'numeral';
@@ -16,7 +15,6 @@ ReactDOM.render(
             <div>
                 <Route exact path="/" component={DepartamentRanking} />
                 <Route path="/departaments" component={DepartamentRanking} />
-                <Route exact path path="/users" component={UserRanking} />
                 <Route path="/users/departament/:name" component={DepartamentUserRanking} />
             </div>
         </Router>

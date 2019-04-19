@@ -4,7 +4,7 @@ import { LOAD_USER_RANKING,
 
 export function getUserRanking() {
     return function(dispatch) {
-      return fetch("/api/user/ranking")
+      return fetch("/api/user/departament/users/ranking")
         .then(response => response.json())
         .then(data => {
           dispatch({ type: LOAD_USER_RANKING, payload: data });

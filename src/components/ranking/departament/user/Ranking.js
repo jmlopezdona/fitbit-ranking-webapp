@@ -10,6 +10,12 @@ export class Ranking extends Component {
       super();
     }
 
+    componentDidMount() {
+        if (this.props.authenticated) {
+            this.props.getUser();
+        }
+    }
+
     render() {
         return (
             <div className="ranking-list">

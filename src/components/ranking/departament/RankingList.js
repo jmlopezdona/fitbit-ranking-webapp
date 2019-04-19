@@ -25,6 +25,42 @@ function Trend(props) {
      }
  }
 
+ function Row(props) {
+    if (props.authenticated && (props.el.name === props.user.departament)) {
+        return (
+            <div key={props.el.position} onClick={() => {props.history.push('/users/departament/' + props.el.name);}}>
+                <li className="mdc-list-item mdc-ripple-upgraded">
+                    <Number position={props.position} listPosition={props.el.position}/>
+                    <span className="mdc-list-item__text">
+                        <span className="mdc-list-item__text">{props.el.name}</span>
+                    </span>
+                    <span className="mdc-list-item__text">
+                        <span className="mdc-list-item__text">&nbsp;&nbsp;({numeral(props.el.currentSteps).format('0,0')} / {numeral(props.el.previusSteps).format('0,0')})</span>
+                    </span>
+                    <Trend trend={props.el.trend}/>
+                </li>
+                <li className="mdc-list-divider" role="separator"></li>
+            </div>
+        );
+    } else {
+        return (
+            <div key={props.el.position}>
+                <li className="mdc-list-item mdc-ripple-upgraded">
+                    <Number position={props.position} listPosition={props.el.position}/>
+                    <span className="mdc-list-item__text">
+                        <span className="mdc-list-item__text">{props.el.name}</span>
+                    </span>
+                    <span className="mdc-list-item__text">
+                        <span className="mdc-list-item__text">&nbsp;&nbsp;({numeral(props.el.currentSteps).format('0,0')} / {numeral(props.el.previusSteps).format('0,0')})</span>
+                    </span>
+                    <Trend trend={props.el.trend}/>
+                </li>
+                <li className="mdc-list-divider" role="separator"></li>
+            </div>
+        );
+    }
+ }
+
 export class List extends Component {
     constructor() {
       super();
@@ -38,27 +74,25 @@ export class List extends Component {
         return (
             <ul className="mdc-list mdc-list--avatar-list">
             {this.props.ranking.map(el => (
-                <div key={el.position} onClick={() => {this.props.history.push('/users/departament/' + el.name);}}>
-                    <li className="mdc-list-item mdc-ripple-upgraded">
-                        <Number position={this.props.position} listPosition={el.position}/>
-                        <span className="mdc-list-item__text">
-                            <span className="mdc-list-item__text">{el.name}</span>
-                        </span>
-                        <span className="mdc-list-item__text">
-                            <span className="mdc-list-item__text">&nbsp;&nbsp;({numeral(el.currentSteps).format('0,0')} / {numeral(el.previusSteps).format('0,0')})</span>
-                        </span>
-                        <Trend trend={el.trend}/>
-                    </li>
-                    <li className="mdc-list-divider" role="separator"></li>
-                </div>
-                ))}
+                <Row 
+                    authenticated = {this.props.authenticated}
+                    user = {this.props.user}
+                    el = {el}
+                    position = {this.props.position}
+                    history = {this.props.history}
+                 />
+            ))}
             </ul>
         )
     };
 }
 
 function mapStateToProps(state) {
-    return { ranking: state.departamentRanking };
+    return { 
+        ranking: state.departamentRanking,
+        authenticated: state.authenticated,
+        user: state.user
+    };
 };
 
 export default withRouter(connect(mapStateToProps, { getRanking })(List));
